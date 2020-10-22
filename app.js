@@ -18,7 +18,7 @@ const managerQuestions = [
     {
         type: "input",
         name: "managerName",
-        message: "Hello manager! To begin building your team's profile, we'll need to know some more information about you and your team. What is your name?"
+        message: "Hello manager! To begin building your engineering team's profile, we'll need to know some more information about you and your team. What is your name?"
     },
     {
         type: "input",
