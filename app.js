@@ -9,10 +9,12 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const Choices = require("inquirer/lib/objects/choices");
 
+const teamMembers = [];
 
 // Write code to use inquirer to gather information about the development team members,
-const questions = [
+const managerQuestions = [
     {
         type: "input",
         name: "managerName",
@@ -27,8 +29,120 @@ const questions = [
         type: "input",
         name: "managerEmail",
         message: "MANAGER: What is your employee email address?"
+    },
+    {
+        type: "input",
+        name: "officeNumber",
+        message: "MANAGER: What is your office number?"
     }
 ]
+
+const engineerQuestions = [
+    {
+        type: "input",
+        name: "engineerName",
+        message: "Next, we'll build a profile for your engineer. What is their name?"
+    },
+    {
+        type: "input",
+        name: "engineerId",
+        message: "ENGINEER: What is your engineer's employee ID?"
+    },
+    {
+        type: "input",
+        name: "engineerEmail",
+        message: "ENGINEER: What is your engineer's email address?"
+    },
+    {
+        type: "input",
+        name: "github",
+        message: "ENGINEER: What is your engineer's GitHub username?"
+    }
+]
+
+const internQuestions = [
+    {
+        type: "input",
+        name: "internName",
+        message: "Next, we'll build a profile for your intern. What is their name?"
+    },
+    {
+        type: "input",
+        name: "internId",
+        message: "INTERN: What is your intern's employee ID?"
+    },
+    {
+        type: "input",
+        name: "internEmail",
+        message: "INTERN: What is your intern's email address?"
+    },
+    {
+        type: "input",
+        name: "school",
+        message: "INTERN: What school is your intern attending or recently graduated from?"
+    }
+]
+
+const addEmployee =
+{
+    type: "list",
+    name: "employeeType",
+    message: "What team member role would you like to add?",
+    choices: ["Engineer", "Intern", "My team is complete"]
+}
+
+
+
+function initialize() {
+    inquirer.prompt(managerQuestions).then((response) => {
+        const newManager = new Manager(response.managerName, response.managerId, response.managerEmail, response.officeNumber)
+        teamMembers.push(newManager)
+        buildTeam()
+    });
+};
+
+function addEngineer() {
+    inquirer.prompt(engineerQuestions).then((response) => {
+        const newEngineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.github)
+        teamMembers.push(newEngineer)
+        buildTeam()
+    });
+};
+
+function addIntern() {
+    inquirer.prompt(internQuestions).then(response => {
+        const newIntern = new Intern(response.internName, response.internId, response.school)
+        teamMembers.push(newIntern)
+        buildTeam()
+    });
+};
+
+
+function buildTeam () {
+    inquirer.prompt(addEmployee).then(response => {
+        if (response.employeeType === "Engineer") {
+            addEngineer()
+        } else if (response.employeeType === "Intern") {
+            addIntern()
+        } else if (response.employeeType === "My team is complete") {
+            const finalHTML = render (teamMembers)
+            fs.writeFile("./output/team.html", finalHTML, (err) => {
+                if (err) throw err
+            })
+            console.log("Generating your team's profile!")
+        }
+    })
+}
+
+
+
+
+// Initialize/ create manager and then add other employees
+initialize();
+
+
+
+
 
 // and to create objects for each team member (using the correct classes as blueprints!)
 
