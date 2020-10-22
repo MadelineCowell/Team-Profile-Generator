@@ -69,7 +69,7 @@ The project must generate a `team.html` page in the `output` directory, that dis
   * Role-specific property (School, link to GitHub profile, or office number)
 
 ## Testing
-![Passed Tests](https://github.com/MadelineCowell/Team-Profile-Generator/blob/master/Assets\Running_Tests.PNG?raw=true)
+![Passed Tests](https://github.com/MadelineCowell/Team-Profile-Generator/blob/master/Assets/Running%20Tests.PNG?raw=true)
 
 ## CREDITS
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
