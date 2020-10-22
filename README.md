@@ -72,4 +72,4 @@ The project must generate a `team.html` page in the `output` directory, that dis
 ![Passed Tests](https://github.com/MadelineCowell/Team-Profile-Generator/blob/master/Assets/Running%20Tests.PNG?raw=true)
 
 ## CREDITS
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+© 2020 Madeline Cowell and © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
