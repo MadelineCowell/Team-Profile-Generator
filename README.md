@@ -68,11 +68,6 @@ The project must generate a `team.html` page in the `output` directory, that dis
 
   * Role-specific property (School, link to GitHub profile, or office number)
 
-## Bonus
 
-* Use validation to ensure that the information provided is in the proper expected format.
-
-* Add the application to your portfolio.
-
-# CREDITS
+## CREDITS
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
